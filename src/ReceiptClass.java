@@ -37,12 +37,11 @@ public class ReceiptClass {
         return subtotal +totalTaxes ;
     }
 
-}
-    public void setSaleTaxes(double saleTaxes) {
-        this.saleTaxes = .06;
-    }
-
-    public void setGrandTotal(double grandTotal) {
-        this.grandTotal = grandTotal;
-    }
+//    public void setSaleTaxes(double saleTaxes) {
+//        this.saleTaxes = .06;
+//    }
+//
+//    public void setGrandTotal(double grandTotal) {
+//        this.grandTotal = grandTotal;
+//    }
 }

@@ -2,7 +2,7 @@
  * Created by christophernamyst on 2/21/17.
  */
 
-import java.util.Scanner;
+/*import java.util.Scanner;
 
 public class ChangeTenderedClass  {
 
