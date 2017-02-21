@@ -1,12 +1,12 @@
+
 import java.util.ArrayList;
 import java.util.Scanner;
-
-
 /**
  * Created by christophernamyst on 2/20/17.
  */
 public class StoreClass {
     public static void main(String[] args) {
+
         Scanner user = new Scanner(System.in);
         //Setting the Variables
         String songName = "";
@@ -58,12 +58,7 @@ public class StoreClass {
         }
 
         int songQty = Validator.getInt(user, "Please Enter the Amount of Songs you'd like to buy: ");
-
-
-
-
-
-
+        
 
     }
 

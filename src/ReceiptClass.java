@@ -6,24 +6,18 @@ public class ReceiptClass {
   private double totalTaxes;
     private double subtotal;
     private final double saleTaxes = .06;
-    private final double price = 1.99;
 
-
-    public ReceiptClass (double subtotal, double saleTaxes, double grandTotal) {
-
-      
-
-
-    }
     public ReceiptClass (double subtotal) {
         this.subtotal = subtotal;
+    }
 
     public double getSubtotal() {
+
         return subtotal;
     }
 
     public double getTotalTaxes() {
-        return ;
+        return totalTaxes;
     }
 
     public double getSaleTaxes() {
@@ -31,10 +25,9 @@ public class ReceiptClass {
 
     }
 
-    public double getGrandTotal(){
+    public double getGrandTotal() {
 
-        return subtotal ;
+        return subtotal + totalTaxes;
     }
-
 }
 
