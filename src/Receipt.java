@@ -1,13 +1,13 @@
 /**
  * Created by Student on 2/20/17.
  */
-public class ReceiptClass {
+public class Receipt {
 
   private double totalTaxes;
     private double subtotal;
     private final double saleTaxes = .06;
 
-    public ReceiptClass (double subtotal) {
+    public Receipt (double subtotal) {
         this.subtotal = subtotal;
     }
 

@@ -5,10 +5,12 @@ public class CartItem {
 
     private int songQty;
     private Song song;
+    private double price = 0.99;
 
     public CartItem() {
         songQty = 0;
         this.song = song;
+        this.price = price;
     }
     public CartItem(int songQuantity, Song song) {
         this.songQty = songQuantity;
@@ -17,7 +19,8 @@ public class CartItem {
 
     @Override
     public String toString() {
-        return "" + song + songQty;
+        return "" + song + "Quantity: " + songQty
+                + " @ " + price;
 
     }
 
@@ -36,6 +39,8 @@ public class CartItem {
     public void setSong(Song song) {
         this.song = song;
     }
+
+    public double getPrice() { return price; }
 
 }
 

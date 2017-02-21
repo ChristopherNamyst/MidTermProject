@@ -7,7 +7,7 @@ public class Song extends CartItem {
     private String artName;
     private int rDate;
     private String genre;
-    private final double price = 0.99;
+
 
     public Song () { //No Arguments Constructor
         songName = "";
@@ -26,11 +26,10 @@ public class Song extends CartItem {
 
     @Override
     public String toString() {
-        return "Name: " + songName + '\n' +
+        return "Name: " + songName + "\t" +
                 "Artist: " + artName + '\n' +
-                "Release: " + rDate + '\n' +
-                "Genre: " + genre + '\n' +
-                price + '\n';
+                "Release: " + rDate + "\t" +
+                "Genre: " + genre;
     }
 
     public String getSongName() {
@@ -65,9 +64,7 @@ public class Song extends CartItem {
         this.genre = genre;
     }
 
-    public double getPrice() {
-        return price;
-    }
+
 
 
 }
