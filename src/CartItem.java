@@ -6,9 +6,12 @@ public class CartItem {
     private int songQty;
     private Song song;
 
+    public CartItem() {
+        songQty = 0;
+        this.song = song;
+    }
     public CartItem(int songQuantity, Song song) {
         this.songQty = songQuantity;
-
         this.song = song;
     }
 

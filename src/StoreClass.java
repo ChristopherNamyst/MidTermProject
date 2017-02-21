@@ -1,4 +1,5 @@
 
+import javax.sound.midi.Track;
 import java.util.ArrayList;
 import java.util.Scanner;
 /**
@@ -19,6 +20,7 @@ public class StoreClass {
                 "Build a Playlist from these selections: " + '\n' + '\n');
         ;
         ArrayList<Song> TrackMenu = new ArrayList<>();
+        ArrayList<CartItem> CartList = new ArrayList<>();
 
         Song j1 = new Song("Role Play", "Trey Songz", 2007, "R & B", price);
         TrackMenu.add(j1);
@@ -53,12 +55,26 @@ public class StoreClass {
 
         int i = 1;
         for (Song s : TrackMenu) {
-            System.out.println("(" + i + ")  " + s.getArtName() + " - " + s.getSongName() + "\n");
+            System.out.println("(" + i + ")  " + s.getArtName() + " - " + s.getSongName());
             i++;
         }
 
-        int songQty = Validator.getInt(user, "Please Enter the Amount of Songs you'd like to buy: ");
-        
+        System.out.println(" ");
+        int songQuantity = Validator.getInt(user, "Please Enter the Amount of Songs you'd like to buy: ");
+
+        //get the track
+        for (i = 0; i < songQuantity; i++){
+            int songChoice = Validator.getInt(user, "Enter the Song Number You'd Like to Purchase: ", 1, 15);
+            System.out.println(TrackMenu.get(songChoice - 1));
+            Song track = TrackMenu.get(songChoice - 1);
+
+            songQuantity = Validator.getInt(user, "How many Copies?");
+            //create a cart item with the track and a quantity
+            CartItem newItem = new CartItem(songQuantity, track);
+            //add this item to the actual cart
+            CartList.add(newItem);
+        }
+        System.out.println("Thanks for your purchase. See You Again Soon!");
 
     }
 

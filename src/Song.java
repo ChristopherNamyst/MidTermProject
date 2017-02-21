@@ -1,7 +1,7 @@
 /**
  * Created by james on 2/20/17.
  */
-public class Song {
+public class Song extends CartItem {
     //Setting private Variables
     private String songName;
     private String artName;
