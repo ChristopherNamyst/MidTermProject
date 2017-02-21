@@ -3,27 +3,27 @@
  */
 public class CartItem {
 
-    private int songQuantity;
+    private int songQty;
     private Song song;
 
 
-    public CartItem(int songQuantity, Song song) {
-        this.songQuantity = songQuantity;
+    public CartItem(int songQty, Song song) {
+        this.songQty = songQty;
         this.song = song;
     }
 
     @Override
     public String toString() {
-        return "" + song + songQuantity;
+        return "" + song + songQty;
 
     }
 
-    public int getSongQuantity() {
-        return songQuantity;
+    public int getSongQty() {
+        return songQty;
     }
 
-    public void setSongQuantity(int songQuantity) {
-        this.songQuantity = songQuantity;
+    public void setSongQty(int songQty) {
+        this.songQty = songQty;
     }
 
     public Song getSong() {

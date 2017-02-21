@@ -1,11 +1,13 @@
 import java.util.ArrayList;
+import java.util.Scanner;
+
 
 /**
  * Created by christophernamyst on 2/20/17.
  */
 public class StoreClass {
     public static void main(String[] args) {
-
+        Scanner user = new Scanner(System.in);
         //Setting the Variables
         String songName = "";
         String  artName = "";
@@ -51,9 +53,11 @@ public class StoreClass {
 
         int i = 1;
         for (Song s : TrackMenu) {
-            System.out.println("(" + i + ")  " + s.getArtName() + " - " + s.getSongName());
+            System.out.println("(" + i + ")  " + s.getArtName() + " - " + s.getSongName() + "\n");
             i++;
         }
+
+        int songQty = Validator.getInt(user, "Please Enter the Amount of Songs you'd like to buy: ");
 
 
 
