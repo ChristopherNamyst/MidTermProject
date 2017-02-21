@@ -20,10 +20,12 @@ public class ReceiptClass {
     }
 
     public double getSubtotal() {
+
         return subtotal;
     }
 
     public double getTotalTaxes() {
+
         return totalTaxes;
     }
 
