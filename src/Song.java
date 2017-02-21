@@ -1,3 +1,5 @@
+
+
 /**
  * Created by james on 2/20/17.
  */
@@ -7,14 +9,13 @@ public class Song {
     private String artName;
     private int rDate;
     private String genre;
-    private double price;
+    private final double price = 0.99;
 
     public Song () { //No Arguments Constructor
         songName = "";
         artName = "";
         rDate = 0;
         genre = "";
-        price = 0;
     }
 
     public Song (String songName, String artName, int rDate, String genre, double price) {
@@ -22,17 +23,16 @@ public class Song {
         this.artName = artName;
         this.rDate = rDate;
         this.genre = genre;
-        this.price = price;
+
     }
 
     @Override
     public String toString() {
-        return "You selected" + '\n' +
-                "Name: " + songName + '\n' +
+        return "Name: " + songName + '\n' +
                 "Artist: " + artName + '\n' +
                 "Release: " + rDate + '\n' +
                 "Genre: " + genre + '\n' +
-                "Price: " + price + '\n';
+                price + '\n';
     }
 
     public String getSongName() {
@@ -71,7 +71,5 @@ public class Song {
         return price;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
+
 }

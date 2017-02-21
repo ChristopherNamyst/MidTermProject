@@ -1,4 +1,4 @@
-package PACKAGE_NAME;
+package bootcamp;
 
 /**
  * Created by Student on 2/20/17.
@@ -7,15 +7,16 @@ public class ReceiptClass {
   private double subtotal;
     private double saleTaxes;
     private double grandTotal;
+    final double PRICE = .99;
+    protected int quantity = 0;
 
     public ReceiptClass () {
         subtotal = 0.0;
-        saleTaxes = .06;
-        grandTotal = 0.0;
+
 
     }
     public ReceiptClass (double subtotal, double saleTaxes, double grandTotal) {
-        subtotal = subtotal;
+        subtotal = quantity * PRICE;
         saleTaxes = .06;
         grandTotal = grandTotal;
 
