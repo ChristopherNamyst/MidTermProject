@@ -41,7 +41,7 @@ public class Validator {
             i = getInt(sc, prompt);
             if (i < min)
                 System.out.println(
-                        "Sorry, That's not a valid number. Please Try Again.");
+                        "Sorry, That's not a valid number. Please Try Again. ");
             else if (i > max)
                 System.exit(0);
             else
@@ -63,9 +63,9 @@ public class Validator {
             }
             else
             {
-                System.out.println("Error! Invalid price. Try again.");
+                System.out.println("Error! Invalid price. Try again! ");
             }
-            sc.nextLine();  // discard any other data entered on the line
+            sc.nextLine();
         }
         return d;
     }

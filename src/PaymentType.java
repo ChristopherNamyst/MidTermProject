@@ -6,39 +6,35 @@ import java.util.Scanner;
 public class PaymentType {
 
 
+    public static String takePaypal(Scanner scan, double amountDue) {
+        //System.out.println(" Please enter your email address associated with your Paypal ID: ");
+        string email = scan.nextString();
 
-
-
-    public static void takeCash(Scanner scan, double amountDue) {
-        System.out.println(" How much cash are you paying:");
-        double cash = scan.nextDouble();
-
-        while (cash < amountDue) {
-            System.out.print(" This is short you owe:");
-            cash = scan.nextDouble();
         }
-        System.out.print(" Your change is : " + (cash - amountDue));
+        System.out.println(" Your Paypal ID has been charged.. " + (cash - amountDue));
     }
+
+
+
+
+
 
     public static void takeCredit(Scanner scan1,double creditNum) {
 
-            System.out.println(" What is the Credit card #:");
+            System.out.println(" What is the Credit card #: ");
             double credit = scan1.nextDouble();
 
             System.out.println(" What is the expiration month: ");
             int month = scan1.nextInt();
 
-            System.out.println(" What is the expiration day: ");
+            System.out.println(" What is the expiration date: ");
             double year = scan1.nextInt();
 
-            System.out.println(" What is your CVV:");
+            System.out.println(" What is your CVV(3 Digit Code on the back of the card)?: ");
             int cvv = scan1.nextInt();
 
             System.out.println(credit + "" + month + "/" + year + "       " + cvv);
         }
-    public static void takeCheck(Scanner scan2) {
-        System.out.println(" What is the Check card #:");
-        double checkNum = scan2.nextDouble();
-    }
+
 
 }
