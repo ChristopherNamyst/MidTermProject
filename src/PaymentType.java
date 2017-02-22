@@ -32,8 +32,14 @@ public class PaymentType {
 
             System.out.println(" What is your CVV(3 Digit Code on the back of the card)?: ");
             int cvv = scan1.nextInt();
+            System.out.println();
 
-            System.out.println(credit + "" + month + "/" + year + "       " + cvv);
+
+            System.out.println(" Card # "+" "+ credit +"\n "+
+                    "Expiration year:" + month + "/" + year + "\n" +
+                    " CVV #" + cvv);
+
+
         }
 
 

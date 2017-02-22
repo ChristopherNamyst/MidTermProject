@@ -32,7 +32,7 @@ public class StoreClass {
         TrackMenu.add(j2);
         Song j3 = new Song("Deja Vu", "J. Cole", 2017, "Hip-Hop ", price);
         TrackMenu.add(j3);
-        Song j4 = new Song("You Aint Gotta Lie", "Kendrick Lamar", 2015, "Hip-Hop ", price);
+        Song j4 = new Song("You Aint Gotta Lie ", "Kendrick Lamar", 2015, "Hip-Hop", price);
         TrackMenu.add(j4);
         Song j5 = new Song("Time and Time Again", "Chronic Future", 2004, "Alternative ", price);
         TrackMenu.add(j5);
@@ -67,8 +67,12 @@ public class StoreClass {
 
         ///////////////PRINTED STATEMENT TO DESCRIBE OUR SERVICES TO THE USER////////////////////////////////
         System.out.println(" ");
+
         int numTracks = Validator.getInt(user, "Here in the BAP App, we offer every song for $0.99! \n" +
+
+        int numTracks = Validator.getInt(user, "The price of every song is 99 cents each.\n" +
                 "Please Enter the Amount of Songs you'd like to buy: ");
+        System.out.println();
 
         ///////////////GETTING THE SONG INFORMATION FROM USER////////////////////////////////////////////////
         int songQuantity = 0;
@@ -76,7 +80,7 @@ public class StoreClass {
 
             /////////ASKING USER TO INPUT A LOCATION NUMBER THAT CORRELATES TO CORRESPONDING SONG/////////////
             int songChoice = Validator.getInt(user, "Enter the Song Number You'd Like to Purchase: ", 1, 15);
-
+            System.out.println();
             System.out.println(TrackMenu.get(songChoice - 1));
 
             Song track = TrackMenu.get(songChoice - 1);
@@ -84,7 +88,12 @@ public class StoreClass {
             ////////ASKING USER TO INPUT HOW MANY COPIES OF EACH SONG WILL BE ADDED TO THEIR CART/////////////
             songQuantity = Validator.getInt(user, "How many Copies?");
 
+
             ////////CREATING A CART ITEM WITH SONG INFORMATION AND QUANTITY//////////////////////////////////
+
+
+            //create a cart item with the track and a quantity
+
             CartItem newItem = new CartItem(songQuantity, track);
 
             ////////USING A METHOD TO ADD ITEM(SONG) TO CART/////////////////////////////////////////////////
@@ -92,24 +101,61 @@ public class StoreClass {
 
         }
 
+
         ////////////////////////THANKING USER FOR THEIR PURCHASE/////////////////////////////////////////////
+        System.out.println();
+
         System.out.println("Thanks for your purchase. Your Order is: ");
+        System.out.println("===========================================");
+        System.out.println(" ");
 
         for (CartItem c : CartList) {
             System.out.println(c);
         }
+
         double amountDue = (numTracks * price) * songQuantity;
         System.out.println();
         int payment1 = Validator.getInt(user, "Please enter your preferred method of payment.\n" +
                 "1 for Credit. 2 for Paypal: ", 1, 2);
 
+
+        //Call the Receipt Class
+        double amountDue = price * songQuantity;
+        System.out.println(" ");
+
+       // System.out.println( " Subtotal: " +" $"+ amountDue);
+
+
+       Receipt receipt = new Receipt(amountDue);
+       System.out.println(receipt);
+
+       // Receipt receipt1 = new Receipt();
+        receipt.getGrandTotal();
+
+
+
+        int payment1 = Validator.getInt(user, "Payment Type? 1 for Cash. 2 for Check. 3 for Credit Card", 1, 3);
+
+
+        double creditNum = 0;
         if (payment1 == 1) {
             PaymentType.takeCredit(user, amountDue);
 
         }
+
         else (payment1 == 2) {
             PaymentType.takePaypal(user, amountDue);
         }
 
     }
 }
+
+        else if (payment1 == 2) {
+            double checkNum = 0;
+            PaymentType.takePaypal(user, checkNum );
+        }
+        else PaymentType.takeCredit(user, creditNum);
+    }
+
+}
+
