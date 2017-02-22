@@ -33,12 +33,29 @@ public class PaymentType {
 
             System.out.println(" What is your CVV:");
             int cvv = scan1.nextInt();
+            System.out.println();
 
-            System.out.println(credit + "" + month + "/" + year + "       " + cvv);
+
+            System.out.println(" Card # "+" "+ credit +"\n "+
+                    "Expiration year:" + month + "/" + year + "\n" +
+                    " CVV #" + cvv);
+
+
         }
-    public static void takeCheck(Scanner scan2) {
+    public static void takeCheck(Scanner scan2, double checkNumAmount) {
         System.out.println(" What is the Check card #:");
-        double checkNum = scan2.nextDouble();
+        double check = scan2.nextDouble();
+
+        System.out.println(" How much are you Writing the check for:");
+        double amount = scan2.nextDouble();
+
+
+        System.out.print(" Your change is : " + (amount- checkNumAmount));
+
+
+
+        }
+
+
     }
 
-}

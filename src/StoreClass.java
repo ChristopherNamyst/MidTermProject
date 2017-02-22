@@ -28,7 +28,7 @@ public class StoreClass {
         TrackMenu.add(j2);
         Song j3 = new Song("Deja Vu", "J. Cole", 2017, "Hip-Hop", price);
         TrackMenu.add(j3);
-        Song j4 = new Song("You Aint Gotta Lie", "Kendrick Lamar", 2015, "Hip-Hop", price);
+        Song j4 = new Song("You Aint Gotta Lie ", "Kendrick Lamar", 2015, "Hip-Hop", price);
         TrackMenu.add(j4);
         Song j5 = new Song("Time and Time Again", "Chronic Future", 2004, "Alternative", price);
         TrackMenu.add(j5);
@@ -60,19 +60,21 @@ public class StoreClass {
         }
 
         System.out.println(" ");
-        int numTracks = Validator.getInt(user, " The price of every song is 99 cents each.\n" +
+        int numTracks = Validator.getInt(user, "The price of every song is 99 cents each.\n" +
                 "Please Enter the Amount of Songs you'd like to buy: ");
+        System.out.println();
 
         //get the track
         int songQuantity = 0;
         for (i = 0; i < numTracks; i++) {
             int songChoice = Validator.getInt(user, "Enter the Song Number You'd Like to Purchase: ", 1, 15);
-
+            System.out.println();
             System.out.println(TrackMenu.get(songChoice - 1));
 
             Song track = TrackMenu.get(songChoice - 1);
 
             songQuantity = Validator.getInt(user, "How many Copies?");
+
 
             //create a cart item with the track and a quantity
             CartItem newItem = new CartItem(songQuantity, track);
@@ -82,22 +84,41 @@ public class StoreClass {
 
         }
 
-
+        System.out.println();
         System.out.println("Thanks for your purchase. Your Order is: ");
+        System.out.println("===========================================");
+        System.out.println(" ");
 
         for (CartItem c : CartList) {
             System.out.println(c);
         }
-        double amountDue = (numTracks * price) * songQuantity;
-        System.out.println();
+
+        //Call the Receipt Class
+        double amountDue = price * songQuantity;
+        System.out.println(" ");
+
+       // System.out.println( " Subtotal: " +" $"+ amountDue);
+
+
+       Receipt receipt = new Receipt(amountDue);
+       System.out.println(receipt);
+
+       // Receipt receipt1 = new Receipt();
+        receipt.getGrandTotal();
+
+
+
         int payment1 = Validator.getInt(user, "Payment Type? 1 for Cash. 2 for Check. 3 for Credit Card", 1, 3);
 
+        double creditNum = 0;
         if (payment1 == 1) {
             PaymentType.takeCash(user, amountDue);
         }
         else if (payment1 == 2) {
-            PaymentType.takeCheck(user);
+            double checkNum = 0;
+            PaymentType.takeCheck(user, checkNum );
         }
-        else PaymentType.takeCredit(user, amountDue);
+        else PaymentType.takeCredit(user, creditNum);
     }
+
 }
