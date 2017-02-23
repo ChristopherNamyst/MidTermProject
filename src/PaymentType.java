@@ -7,25 +7,14 @@ import java.util.Scanner;
 public class PaymentType {
 
 
-    public static void takePaypal(Scanner scan, double amountDue) {
+    public static String takePaypal(Scanner scan, double amountDue) {
         System.out.println(" Please enter your email address associated with your Paypal ID: ");
         String email = scan.next();
 
-        System.out.println( "How much is on you card");
-        double cash=scan.nextDouble();
+        //System.out.println("How much is on you card");
 
-        double salesTaxes=.06;
-
-        while (cash < amountDue) {
-            System.out.print(" This is short you owe:");
-            cash = scan.nextDouble();
-        }
-
-//////////////////////////// What if there is not enough on the card//////////////////////////////////////////////////
-
-
-      //  System.out.println(" Your Paypal ID has been charged. " + (salesTaxes * amountDue));
-        // return (salesTaxes * amountDue )- cash;
+        //System.out.println(" Your Paypal ID has been charged.. " + (cash - amountDue));
+        return null;
     }
 
     public static void takeCredit(Scanner scan1, double amountDue) {

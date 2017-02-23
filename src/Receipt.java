@@ -1,13 +1,16 @@
+import java.text.NumberFormat;
+
 /**
  * Created by Student on 2/20/17.
  */
 public class Receipt {
 
-   private double totalTaxes;
+    private double totalTaxes;
     private double subtotal;
     private final double saleTaxes = .06;
     private double receipt;
-    protected double grandTotal= saleTaxes + subtotal;
+
+    NumberFormat nf = NumberFormat.getCurrencyInstance();
 
 
     public Receipt (double subtotal) {
@@ -20,45 +23,36 @@ public class Receipt {
         this.receipt = receipt;
     }
 
-    public double getTotalTaxes() {
-        return totalTaxes;
-    }
-
-    public double getSubtotal() {
-        return subtotal;
-    }
-
-    public double getSaleTaxes() {
-        return saleTaxes;
-    }
-
     public double getReceipt() {
         return receipt;
     }
 
-    public double getGrandTotal() {
-      return subtotal + totalTaxes;
+    public double getSubtotal() {
+
+        return subtotal;
     }
 
-    public void setTotalTaxes(double totalTaxes) {
-        this.totalTaxes = totalTaxes;
+    public double getTotalTaxes() {
+        return getSubtotal() * saleTaxes;
     }
 
-    public void setSubtotal(double subtotal) {
-        this.subtotal = subtotal;
+    public double getSaleTaxes() {
+        return saleTaxes;
+
     }
 
     public void setReceipt(double receipt) {
         this.receipt = receipt;
     }
 
-    public void setGrandTotal(double grandTotal) {
-        this.grandTotal = grandTotal;
+    public double getGrandTotal() {
+
+        return getSubtotal() + getTotalTaxes();
     }
     public String toString(){
-        return "Your subtotal" +" "+ subtotal +"\n"
-              +"Your Sale Taxes" + " "+ saleTaxes+"\n"
-              +"Your Total: " + " "+ (saleTaxes + subtotal)  +"\n";
+        return "Your subtotal" +" "+ nf.format(getSubtotal()) +"\n"
+                +"Your Sale Taxes" + " "+ nf.format(getTotalTaxes()) + "\n"
+                +"Your Total Due: " + " "+ nf.format(getGrandTotal())+"\n";
 
     }
 }
