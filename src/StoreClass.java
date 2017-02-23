@@ -68,10 +68,10 @@ public class StoreClass {
         ///////////////PRINTED STATEMENT TO DESCRIBE OUR SERVICES TO THE USER////////////////////////////////
         System.out.println(" ");
 
-        int numTracks = Validator.getInt(user, "Here in the BAP App, we offer every song for $0.99! \n" +
+     //   int numTracks = Validator.getInt(user, "Here in the BAP App, we offer every song for $0.99! \n" +
 
-        int numTracks = Validator.getInt(user, "The price of every song is 99 cents each.\n" +
-                "Please Enter the Amount of Songs you'd like to buy: ");
+       int numTracks = Validator.getInt(user, "Here in the BAP App, we offer every song for $0.99! \n"
+               + "Please Enter the Amount of Songs you'd like to buy: ");
         System.out.println();
 
         ///////////////GETTING THE SONG INFORMATION FROM USER////////////////////////////////////////////////
@@ -88,6 +88,9 @@ public class StoreClass {
             ////////ASKING USER TO INPUT HOW MANY COPIES OF EACH SONG WILL BE ADDED TO THEIR CART/////////////
             songQuantity = Validator.getInt(user, "How many Copies?");
 
+         /*   while (numTracks < songQuantity){
+                System.out.println( " You have another copy to select");
+            }*/
 
             ////////CREATING A CART ITEM WITH SONG INFORMATION AND QUANTITY//////////////////////////////////
 
@@ -112,49 +115,39 @@ public class StoreClass {
         for (CartItem c : CartList) {
             System.out.println(c);
         }
-
-        double amountDue = (numTracks * price) * songQuantity;
+//
+        double amountDue =  price * songQuantity;
         System.out.println();
         int payment1 = Validator.getInt(user, "Please enter your preferred method of payment.\n" +
                 "1 for Credit. 2 for Paypal: ", 1, 2);
 
 
         //Call the Receipt Class
-        double amountDue = price * songQuantity;
+        Receipt receipt = new Receipt(amountDue);
+        amountDue = price * songQuantity-receipt.getGrandTotal();
         System.out.println(" ");
+       // receipt.getGrandTotal();
 
        // System.out.println( " Subtotal: " +" $"+ amountDue);
 
 
-       Receipt receipt = new Receipt(amountDue);
+      // Receipt receipt = new Receipt(amountDue);
        System.out.println(receipt);
 
        // Receipt receipt1 = new Receipt();
         receipt.getGrandTotal();
 
 
-
-        int payment1 = Validator.getInt(user, "Payment Type? 1 for Cash. 2 for Check. 3 for Credit Card", 1, 3);
-
-
         double creditNum = 0;
         if (payment1 == 1) {
             PaymentType.takeCredit(user, amountDue);
 
-        }
-
-        else (payment1 == 2) {
+        } else if (payment1 == 2){
             PaymentType.takePaypal(user, amountDue);
+        }else {
+            System.out.print("Invaild payment");
         }
 
-    }
-}
-
-        else if (payment1 == 2) {
-            double checkNum = 0;
-            PaymentType.takePaypal(user, checkNum );
-        }
-        else PaymentType.takeCredit(user, creditNum);
     }
 
 }

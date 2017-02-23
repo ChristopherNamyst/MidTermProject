@@ -1,3 +1,4 @@
+import java.text.NumberFormat;
 import java.util.Scanner;
 
 /**
@@ -6,41 +7,53 @@ import java.util.Scanner;
 public class PaymentType {
 
 
-    public static String takePaypal(Scanner scan, double amountDue) {
-        //System.out.println(" Please enter your email address associated with your Paypal ID: ");
-        string email = scan.nextString();
+    public static void takePaypal(Scanner scan, double amountDue) {
+        System.out.println(" Please enter your email address associated with your Paypal ID: ");
+        String email = scan.next();
 
+        System.out.println( "How much is on you card");
+        double cash=scan.nextDouble();
+
+        double salesTaxes=.06;
+
+        while (cash < amountDue) {
+            System.out.print(" This is short you owe:");
+            cash = scan.nextDouble();
         }
-        System.out.println(" Your Paypal ID has been charged.. " + (cash - amountDue));
+
+//////////////////////////// What if there is not enough on the card//////////////////////////////////////////////////
+
+
+      //  System.out.println(" Your Paypal ID has been charged. " + (salesTaxes * amountDue));
+        // return (salesTaxes * amountDue )- cash;
     }
 
+    public static void takeCredit(Scanner scan1, double amountDue) {
+
+        System.out.println(" What is the Credit card #: ");
+        long credit = scan1.nextLong();
+
+        System.out.println(" What is the expiration month: ");
+        int month = scan1.nextInt();
+
+        System.out.println(" What is the expiration date: ");
+        int year = scan1.nextInt();
+
+        System.out.println(" What is your CVV(3 Digit Code on the back of the card)?: ");
+        int cvv = scan1.nextInt();
+        System.out.println();
+
+
+        NumberFormat nf = NumberFormat.getCurrencyInstance();
 
 
 
+        System.out.println(nf.format(amountDue)+ " Charged to Card # "+ "xxxxxxxxxxxx "
+                + String.valueOf(credit).substring(12, 16) +"\n "+
+                "Expiration year:" + month + "/" + year + "\n" +
+                " CVV #" + cvv);
 
-
-    public static void takeCredit(Scanner scan1,double creditNum) {
-
-            System.out.println(" What is the Credit card #: ");
-            double credit = scan1.nextDouble();
-
-            System.out.println(" What is the expiration month: ");
-            int month = scan1.nextInt();
-
-            System.out.println(" What is the expiration date: ");
-            double year = scan1.nextInt();
-
-            System.out.println(" What is your CVV(3 Digit Code on the back of the card)?: ");
-            int cvv = scan1.nextInt();
-            System.out.println();
-
-
-            System.out.println(" Card # "+" "+ credit +"\n "+
-                    "Expiration year:" + month + "/" + year + "\n" +
-                    " CVV #" + cvv);
-
-
-        }
+    }
 
 
 }

@@ -7,6 +7,7 @@ public class Receipt {
     private double subtotal;
     private final double saleTaxes = .06;
     private double receipt;
+    protected double grandTotal= saleTaxes + subtotal;
 
 
     public Receipt (double subtotal) {
@@ -19,31 +20,40 @@ public class Receipt {
         this.receipt = receipt;
     }
 
-    public double getReceipt() {
-        return receipt;
-    }
-
-    public double getSubtotal() {
-
-        return subtotal;
-    }
-
     public double getTotalTaxes() {
         return totalTaxes;
     }
 
+    public double getSubtotal() {
+        return subtotal;
+    }
+
     public double getSaleTaxes() {
         return saleTaxes;
+    }
 
+    public double getReceipt() {
+        return receipt;
+    }
+
+    public double getGrandTotal() {
+      return subtotal + totalTaxes;
+    }
+
+    public void setTotalTaxes(double totalTaxes) {
+        this.totalTaxes = totalTaxes;
+    }
+
+    public void setSubtotal(double subtotal) {
+        this.subtotal = subtotal;
     }
 
     public void setReceipt(double receipt) {
         this.receipt = receipt;
     }
 
-    public double getGrandTotal() {
-
-        return subtotal + totalTaxes;
+    public void setGrandTotal(double grandTotal) {
+        this.grandTotal = grandTotal;
     }
     public String toString(){
         return "Your subtotal" +" "+ subtotal +"\n"
