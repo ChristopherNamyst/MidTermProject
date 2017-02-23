@@ -1,3 +1,4 @@
+import java.text.NumberFormat;
 import java.util.Scanner;
 
 /**
@@ -8,37 +9,37 @@ public class PaymentType {
 
     public static String takePaypal(Scanner scan, double amountDue) {
         //System.out.println(" Please enter your email address associated with your Paypal ID: ");
-        string email = scan.nextString();
+        String email = scan.next();
 
-        }
-        System.out.println(" Your Paypal ID has been charged.. " + (cash - amountDue));
+
+        //System.out.p(" Your Paypal ID has been charged.. " + (cash - amountDue));
+    return null;
     }
 
-
-
-
-
-
-    public static void takeCredit(Scanner scan1,double creditNum) {
+    public static void takeCredit(Scanner scan1, double amountDue) {
 
             System.out.println(" What is the Credit card #: ");
-            double credit = scan1.nextDouble();
+            long credit = scan1.nextLong();
 
             System.out.println(" What is the expiration month: ");
             int month = scan1.nextInt();
 
             System.out.println(" What is the expiration date: ");
-            double year = scan1.nextInt();
+            int year = scan1.nextInt();
 
             System.out.println(" What is your CVV(3 Digit Code on the back of the card)?: ");
             int cvv = scan1.nextInt();
             System.out.println();
 
 
-            System.out.println(" Card # "+" "+ credit +"\n "+
+            NumberFormat nf = NumberFormat.getCurrencyInstance();
+
+
+
+            System.out.println(nf.format(amountDue)+ " Charged to Card # "+ "xxxxxxxxxxxx "
+                    + String.valueOf(credit).substring(12, 16) +"\n "+
                     "Expiration year:" + month + "/" + year + "\n" +
                     " CVV #" + cvv);
-
 
         }
 

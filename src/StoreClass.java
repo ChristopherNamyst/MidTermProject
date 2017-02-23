@@ -1,5 +1,6 @@
 
 import javax.sound.midi.Track;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 /**
@@ -15,7 +16,7 @@ public class StoreClass {
         String artName = "";
         int rDate = 0;
         String genre = "";
-        final double price = 0.99;
+        final double price = 1.00;
 
         ///////////////INITIAL GREETING/////////////////////////////////////////////
         System.out.print("Welcome to the BAP App!!!" + '\n' + '\n' +
@@ -68,10 +69,11 @@ public class StoreClass {
         ///////////////PRINTED STATEMENT TO DESCRIBE OUR SERVICES TO THE USER////////////////////////////////
         System.out.println(" ");
 
-        int numTracks = Validator.getInt(user, "Here in the BAP App, we offer every song for $0.99! \n" +
+        NumberFormat nf = NumberFormat.getCurrencyInstance();
 
-        int numTracks = Validator.getInt(user, "The price of every song is 99 cents each.\n" +
-                "Please Enter the Amount of Songs you'd like to buy: ");
+        int numTracks = Validator.getInt(user,
+                "The price of every song is " + nf.format(price) + " each.\n" +
+               "Please enter the number of songs you would like to buy:");
         System.out.println();
 
         ///////////////GETTING THE SONG INFORMATION FROM USER////////////////////////////////////////////////
@@ -109,53 +111,45 @@ public class StoreClass {
         System.out.println("===========================================");
         System.out.println(" ");
 
+        double amountDue = 0;
+
         for (CartItem c : CartList) {
             System.out.println(c);
+            amountDue += c.getSongQty() * c.getPrice();
         }
 
-        double amountDue = (numTracks * price) * songQuantity;
-        System.out.println();
+        //double amountDue = (numTracks * price) * songQuantity;
+        //System.out.println();
+
+        Receipt receipt = new Receipt(amountDue);
+        System.out.println(receipt);
+
+
         int payment1 = Validator.getInt(user, "Please enter your preferred method of payment.\n" +
                 "1 for Credit. 2 for Paypal: ", 1, 2);
 
 
-        //Call the Receipt Class
-        double amountDue = price * songQuantity;
+        /////////////////////////////CALL THE RECEIPT CLASS///////////////////////////////////////////
         System.out.println(" ");
 
-       // System.out.println( " Subtotal: " +" $"+ amountDue);
-
-
-       Receipt receipt = new Receipt(amountDue);
-       System.out.println(receipt);
-
-       // Receipt receipt1 = new Receipt();
-        receipt.getGrandTotal();
-
-
-
-        int payment1 = Validator.getInt(user, "Payment Type? 1 for Cash. 2 for Check. 3 for Credit Card", 1, 3);
-
-
-        double creditNum = 0;
         if (payment1 == 1) {
-            PaymentType.takeCredit(user, amountDue);
+            PaymentType.takeCredit(user, receipt.getGrandTotal());
 
         }
-
-        else (payment1 == 2) {
-            PaymentType.takePaypal(user, amountDue);
-        }
-
-    }
-}
 
         else if (payment1 == 2) {
-            double checkNum = 0;
-            PaymentType.takePaypal(user, checkNum );
+            PaymentType.takePaypal(user, amountDue);
         }
-        else PaymentType.takeCredit(user, creditNum);
-    }
+        for (CartItem c : CartList) {
+            System.out.println(c);
+        }
 
+
+        System.out.println("Thank You for shopping with us today and building your playlist!!!\n" +
+                "Have a Great Day!!!!");
+
+    }
 }
+
+
 

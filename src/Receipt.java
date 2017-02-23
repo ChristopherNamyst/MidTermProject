@@ -1,3 +1,5 @@
+import java.text.NumberFormat;
+
 /**
  * Created by Student on 2/20/17.
  */
@@ -7,6 +9,8 @@ public class Receipt {
     private double subtotal;
     private final double saleTaxes = .06;
     private double receipt;
+
+    NumberFormat nf = NumberFormat.getCurrencyInstance();
 
 
     public Receipt (double subtotal) {
@@ -29,7 +33,7 @@ public class Receipt {
     }
 
     public double getTotalTaxes() {
-        return totalTaxes;
+        return getSubtotal() * saleTaxes;
     }
 
     public double getSaleTaxes() {
@@ -43,12 +47,12 @@ public class Receipt {
 
     public double getGrandTotal() {
 
-        return subtotal + totalTaxes;
+        return getSubtotal() + getTotalTaxes();
     }
     public String toString(){
-        return "Your subtotal" +" "+ subtotal +"\n"
-              +"Your Sale Taxes" + " "+ saleTaxes+"\n"
-              +"Your Total: " + " "+ (saleTaxes + subtotal)  +"\n";
+        return "Your subtotal" +" "+ nf.format(getSubtotal()) +"\n"
+              +"Your Sale Taxes" + " "+ nf.format(getTotalTaxes()) + "\n"
+              +"Your Total Due: " + " "+ nf.format(getGrandTotal())+"\n";
 
     }
 }

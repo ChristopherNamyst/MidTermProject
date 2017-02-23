@@ -1,3 +1,5 @@
+import java.text.NumberFormat;
+
 /**
  * Created by christophernamyst on 2/21/17.
  */
@@ -5,7 +7,7 @@ public class CartItem {
 
     private int songQty;
     private Song song;
-    private double price = 0.99;
+    private double price = 1.00;
 
     public CartItem() {
         songQty = 0;
@@ -16,11 +18,14 @@ public class CartItem {
         this.songQty = songQuantity;
         this.song = song;
     }
+    NumberFormat nf = NumberFormat.getCurrencyInstance();
+
+
 
     @Override
     public String toString() {
         return "" + song + "Quantity: " + songQty
-                + " @ " + price;
+                + " @ " + nf.format(price) + "\n";
 
     }
 
