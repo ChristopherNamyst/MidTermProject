@@ -6,15 +6,15 @@ import java.util.Scanner;
  */
 public class PaymentType {
 
+    static NumberFormat nf = NumberFormat.getCurrencyInstance();
 
-    public static String takePaypal(Scanner scan, double amountDue) {
-        System.out.println(" Please enter your email address associated with your Paypal ID: ");
-        String email = scan.next();
+    public static void takePaypal(Scanner scan, double amountDue) {
+        String email = Validator.getString( scan," Please enter your Paypal ID email: ");
 
-        //System.out.println("How much is on you card");
 
-        //System.out.println(" Your Paypal ID has been charged.. " + (cash - amountDue));
-        return null;
+
+        System.out.println("Paypal ID: " + email + " has been charged:  " + '\t' + nf.format(amountDue));
+
     }
 
     public static void takeCredit(Scanner scan1, double amountDue) {
@@ -33,7 +33,7 @@ public class PaymentType {
         System.out.println();
 
 
-        NumberFormat nf = NumberFormat.getCurrencyInstance();
+
 
 
 

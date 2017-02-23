@@ -137,7 +137,7 @@ public class StoreClass {
         }
 
         else if (payment1 == 2) {
-            PaymentType.takePaypal(user, amountDue);
+            PaymentType.takePaypal(user, receipt.getGrandTotal());
         }
         for (CartItem c : CartList) {
             System.out.println(c);
